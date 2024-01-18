@@ -1,4 +1,5 @@
 import 'package:animation_flutter_project_udemy/animaton/login_animation.dart';
+import 'package:animation_flutter_project_udemy/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoginPage extends StatefulWidget {
@@ -163,8 +164,29 @@ class _LoginPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        onPressed: () {},
+        onPressed: () async{
+          await _controller.reverse();
+          Navigator.pushReplacement(_context, FPageRoute(AnimatedHomePage()));
+        },
     );
 
   }
+}
+
+class FPageRoute extends PageRouteBuilder{
+  final Widget _child;
+
+  FPageRoute(this._child)
+    :super(
+      transitionDuration: Duration(milliseconds:  600),
+      transitionsBuilder: (BuildContext _context,
+      Animation<double> animation,
+      Animation<double> secondAnimation,
+      Widget child){
+        return FadeTransition(opacity: animation, child: child);
+      },
+    pageBuilder: (BuildContext _context, animation, secondAnimation){
+        return _child;
+    },
+  );
 }
