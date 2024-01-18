@@ -63,6 +63,11 @@ class _LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               _avatarWidget(),
+              SizedBox(height:  _deviceHeight * 0.07),
+              _emailTextWidget(),
+              _PasswordTextWidget(),
+              SizedBox(height:  _deviceHeight * 0.10),
+              _LoginButton(context),
             ],
           ),
         ),
@@ -97,5 +102,69 @@ class _LoginPage extends StatelessWidget {
 
         }
     );
+  }
+
+  Widget _emailTextWidget(){
+    return Container(
+      width:  _deviceWidth * 0.65,
+      child: TextField(
+        cursorColor: _secondColor,
+        autocorrect: false,
+        style: TextStyle(
+          color: _secondColor,
+        ),
+        decoration: InputDecoration(
+          hintText: "E-Mail Adress",
+          hintStyle: TextStyle(color: _secondColor),
+          enabledBorder:  UnderlineInputBorder(
+            borderSide: BorderSide(color:_secondColor)
+          ),
+          focusedBorder:  UnderlineInputBorder(
+              borderSide: BorderSide(color:_secondColor)
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _PasswordTextWidget(){
+    return Container(
+      width:  _deviceWidth * 0.65,
+      child: TextField(
+        obscureText: true,
+        cursorColor: _secondColor,
+        autocorrect: false,
+        style: TextStyle(
+          color: _secondColor,
+        ),
+        decoration: InputDecoration(
+          hintText: "Password",
+          hintStyle: TextStyle(color: _secondColor),
+          enabledBorder:  UnderlineInputBorder(
+              borderSide: BorderSide(color:_secondColor)
+          ),
+          focusedBorder:  UnderlineInputBorder(
+              borderSide: BorderSide(color:_secondColor)
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _LoginButton(BuildContext _context){
+    return MaterialButton(
+        minWidth: _deviceWidth * 0.38,
+        height: _deviceHeight * 0.065,
+        color: _secondColor,
+        child: Text(
+          "LOGIN",
+          style:  TextStyle(fontSize:  16, color: _primaryColor, fontWeight: FontWeight.bold),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        onPressed: () {},
+    );
+
   }
 }
