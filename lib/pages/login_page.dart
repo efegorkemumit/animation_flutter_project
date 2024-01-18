@@ -45,6 +45,6 @@ class _LoginPage extends StatelessWidget {
   }
 
   Widget _avatarWidget(){
-    return 
+    return  a
   }
 }
