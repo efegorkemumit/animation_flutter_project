@@ -65,6 +65,10 @@ class _HomePage extends StatelessWidget {
             children: <Widget>[
               _avatarWidget(),
               SizedBox(height:  _deviceHeight * 0.07),
+              _nameWidget(),
+              _surnameWidget(),
+              SizedBox(height:  _deviceHeight * 0.07),
+              _logoutButton(context),
 
             ],
           ),
@@ -105,6 +109,39 @@ class _HomePage extends StatelessWidget {
 
         }
     );
+  }
+
+  Widget _nameWidget(){
+    return Container(
+      child: Text(
+        "Efe Görkem Ümit",
+        style: TextStyle(color: _primaryColor, fontSize: 25, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+  Widget _surnameWidget(){
+    return Container(
+      child: Text(
+        "Youtube Abone Ol",
+        style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+  Widget _logoutButton(BuildContext _context){
+    return MaterialButton(
+      minWidth: _deviceWidth * 0.58,
+      height: _deviceHeight * 0.065,
+      color: _primaryColor,
+      child: Text(
+        "LOGOUT",
+        style:  TextStyle(fontSize:  16, color: _secondColor, fontWeight: FontWeight.bold),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      onPressed: () {},
+    );
+
   }
 }
 
