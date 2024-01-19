@@ -1,4 +1,5 @@
 import 'package:animation_flutter_project_udemy/animaton/login_animation.dart';
+import 'package:animation_flutter_project_udemy/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedHomePage extends StatefulWidget {
@@ -139,9 +140,37 @@ class _HomePage extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      onPressed: () {},
+      onPressed: ()  async{
+        await Navigator.push(_context, SlidePageRoute(AnimatedLoginPage()));
+      },
     );
 
   }
 }
+class SlidePageRoute extends PageRouteBuilder{
+  final Widget _child;
 
+  SlidePageRoute(this._child)
+    :super(
+    transitionDuration: Duration(milliseconds: 600),
+    transitionsBuilder: (
+          BuildContext _context,
+          Animation<double> animation,
+          Animation<double> secondAnimation,
+          Widget child,) {
+      final tween = Tween<double>(begin : 1, end:0);
+      final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut,);
+
+      return SlideTransition(position: Tween<Offset>(begin: Offset(1,0), end: Offset(0,0)).animate(curvedAnimation),
+        child:  child,
+      );
+    },
+    pageBuilder: (BuildContext _context, animation, secondAnimation){
+      return _child;
+    }
+
+
+  );
+
+
+}
